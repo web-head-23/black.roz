@@ -1,100 +1,50 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>roz</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #030005;
-      margin: 0;
-      padding: 0;
-      display: flex;
-      flex-direction: column; /* stack card + sticker */
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
-    }
-
-    .card {
-      background: white;
-      padding: 30px;
-      border-radius: 12px;
-      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
-      text-align: center;
-      max-width: 350px;
-    }
-
-    h1 {
-      color: #333;
-      margin-bottom: 10px;
-    }
-
-    button {
-      margin-top: 15px;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 8px;
-      background: black;
-      color: white;
-      font-size: 16px;
-      font-weight: bold;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    button:hover {
-      background: purple;
-      transform: scale(1.05);
-    }
-
-    p {
-      font-size: 18px;
-      color: #555;
-      margin-top: 15px;
-      transition: color 0.5s ease;
-    }
-
-    #sticker {
-      margin-top: 25px;
-      width: 200px;   /* bigger size */
-      display: none;  /* hidden until button is clicked */
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>Siddharth Rose</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
 
-  <div class="card">
-    <h1>Welcum</h1>
-    <button onclick="changeMessage()">smash me</button>
-    <p id="message"> >Hi this is siddharth ;</p>
+  <!-- Top Links -->
+  <div class="top-links">
+    <a href="https://instagram.com/YOUR_INSTAGRAM" target="_blank">Instagram</a>
+    <a href="mailto:yourmail@example.com">Mail</a>
   </div>
 
-  <!-- Sticker outside the card -->
-  <img id="sticker" src="image.png" alt="sticker">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-image">
+      <img src="siddharth.jpg" alt="Siddharth Rose">
+    </div>
 
-  <script>
-    function changeMessage() {
-      const msg = document.getElementById("message");
-      const sticker = document.getElementById("sticker");
+    <div class="hero-text">
+      <h1>SIDDHARTH ROSE</h1>
+    </div>
+  </section>
 
-      msg.textContent = "#> may be in future there may be some content; stay blessed;";
-      msg.style.color = "#ff66ff"; 
+  <!-- Scroll Content -->
+  <section class="content">
+    <h2>About</h2>
+    <p>
+      Discipline. Consistency. Growth.  
+      This space is designed to reflect focus, strength, and personal evolution.
+    </p>
 
-      // Show sticker
-      sticker.style.display = "block";
-    }
-  </script>
+    <h2>Vision</h2>
+    <p>
+      Building presence through action.  
+      Moving forward with intent and clarity.
+    </p>
 
+    <h2>Contact</h2>
+    <p>
+      Reach out via Instagram or Email for collaborations or conversations.
+    </p>
+  </section>
+
+  <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
-
-
-

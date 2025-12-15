@@ -1,94 +1,241 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>ROSE</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<title>My Website</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-	body {
-	    animation: fadeIn 1.2s ease;
-	}
-	
-	@keyframes fadeIn {
-	    from {
-	        opacity: 0;
-	        transform: translateY(10px);
-	    }
-	    to {
-	        opacity: 1;
-	        transform: translateY(0);
-	    }
-	}
+<style>
+:root {
+    --bg: #000;
+    --text: #fff;
+    --cursor: #fff;
+}
 
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, Helvetica, sans-serif;
-        }
+body.light {
+    --bg: #f5f5f5;
+    --text: #000;
+    --cursor: #000;
+}
 
-        body {
-            height: 100vh;
-            background: #000;
-            color: #fff;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    cursor: none;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
 
-        h1 {
-            font-size: 3rem;
-            margin-bottom: 20px;
-        }
+body {
+    min-height: 100vh;
+    background: var(--bg);
+    color: var(--text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: background 0.4s ease, color 0.4s ease;
+    overflow-x: hidden;
+}
 
-        p {
-            font-size: 1.2rem;
-            max-width: 600px;
-            line-height: 1.6;
-            margin-bottom: 60px; /* Space between paragraph & links */
-            opacity: 0.9;
-        }
+/* Typography */
+h1 {
+    font-size: 3rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+}
 
-        .links {
-            display: flex;
-            gap: 30px;
-        }
+p {
+    font-size: 1.2rem;
+    max-width: 600px;
+    line-height: 1.6;
+    margin-bottom: 60px;
+    opacity: 0.9;
+}
 
-        .links a {
-            color: #fff;
-            text-decoration: none;
-            font-size: 1.1rem;
-            transition: opacity 0.3s ease;
-        }
+/* Links */
+.links {
+    display: flex;
+    gap: 30px;
+}
 
-        .links a:hover {
-            opacity: 0.6;
-        }
-    </style>
+.links a {
+    color: var(--text);
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: opacity 0.3s ease;
+}
+
+.links a:hover {
+    opacity: 0.6;
+}
+
+/* Scroll Reveal */
+.reveal {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.8s ease;
+}
+
+.reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Custom Cursor */
+.cursor {
+    position: fixed;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--cursor);
+    pointer-events: none;
+    transform: translate(-50%, -50%);
+    transition: transform 0.08s ease, background 0.3s ease;
+    z-index: 999;
+}
+
+.cursor.hover {
+    transform: translate(-50%, -50%) scale(2);
+}
+
+/* Theme Toggle Button */
+.theme-toggle {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 8px 14px;
+    font-size: 0.9rem;
+    background: transparent;
+    border: 1px solid var(--text);
+    color: var(--text);
+    letter-spacing: 1px;
+    transition: opacity 0.3s ease;
+}
+
+.theme-toggle:hover {
+    opacity: 0.7;
+}
+
+/* Glitch Overlay */
+.glitch-overlay {
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        rgba(255,255,255,0.04),
+        rgba(255,255,255,0.04) 1px,
+        transparent 1px,
+        transparent 3px
+    );
+    mix-blend-mode: difference;
+    opacity: 0;
+    pointer-events: none;
+    z-index: 998;
+}
+
+.glitch-active {
+    animation: glitchFlash 0.35s steps(2) forwards;
+}
+
+@keyframes glitchFlash {
+    0% { opacity: 0; transform: translate(0); }
+    20% { opacity: 1; transform: translate(-2px, 2px); }
+    40% { transform: translate(2px, -2px); }
+    60% { transform: translate(-1px, 1px); }
+    80% { opacity: 0.8; }
+    100% { opacity: 0; transform: translate(0); }
+}
+</style>
 </head>
+
 <body>
 
-    <h1>hey,</h1>
+<button class="theme-toggle">LIGHT</button>
+<div class="cursor"></div>
+<div class="glitch-overlay"></div>
 
-    <p>
-        i'm siddharth rose,
-        i specialize in cyber investigations.
-    </p>
-    <p>
-        click to connect :
-    </p>
-    <div class="links">
-        <a href="https://instagram.com/siddharthr0se" target="_blank">instagram</a>
-        <a href="https://medium.com/@web.head" target="_blank">blog</a>
-        <a href="mailto:siddharthrose@proton.me">mail</a>
-    </div>
+<h1 id="typing-text" class="reveal"></h1>
 
-    <script>
-        console.log("Website Loaded");
-    </script>
+<p class="reveal">
+    i'm siddharth rose,<br>
+    i specialise in cyber investigations.<br>
+    connect using followng links :	
+</p>
+
+<div class="links reveal">
+    <a href="https://instagram.com/siddharthr0se" target="_blank">Instagram</a>
+    <a href="https://medium.com/@web.head" target="_blank">Blog</a>
+    <a href="mailto:siddharthrose@proton.me">Mail</a>
+</div>
+
+<script>
+/* Typing Effect */
+const text = "hey,";
+let index = 0;
+const typingEl = document.getElementById("typing-text");
+
+function typeText() {
+    if (index < text.length) {
+        typingEl.textContent += text.charAt(index);
+        index++;
+        setTimeout(typeText, 120);
+    }
+}
+typeText();
+
+/* Scroll Reveal */
+const reveals = document.querySelectorAll(".reveal");
+
+function revealOnScroll() {
+    reveals.forEach(el => {
+        if (el.getBoundingClientRect().top < window.innerHeight - 80) {
+            el.classList.add("active");
+        }
+    });
+}
+window.addEventListener("scroll", revealOnScroll);
+revealOnScroll();
+
+/* Custom Cursor */
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", e => {
+    cursor.style.left = e.clientX + "px";
+    cursor.style.top = e.clientY + "px";
+});
+
+document.querySelectorAll("a, button").forEach(el => {
+    el.addEventListener("mouseenter", () => cursor.classList.add("hover"));
+    el.addEventListener("mouseleave", () => cursor.classList.remove("hover"));
+});
+
+/* Theme Toggle with Glitch */
+const toggleBtn = document.querySelector(".theme-toggle");
+const glitch = document.querySelector(".glitch-overlay");
+const savedTheme = localStorage.getItem("theme");
+
+if (savedTheme === "light") {
+    document.body.classList.add("light");
+    toggleBtn.textContent = "DARK";
+}
+
+toggleBtn.addEventListener("click", () => {
+    glitch.classList.add("glitch-active");
+
+    setTimeout(() => {
+        document.body.classList.toggle("light");
+        const isLight = document.body.classList.contains("light");
+        toggleBtn.textContent = isLight ? "DARK" : "LIGHT";
+        localStorage.setItem("theme", isLight ? "light" : "dark");
+    }, 120);
+
+    setTimeout(() => {
+        glitch.classList.remove("glitch-active");
+    }, 400);
+});
+</script>
 
 </body>
 </html>
